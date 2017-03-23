@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>绑定DOM元素</title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+	</head>
+	<body>
+		<div id="app-2">
+			<span v-bind:title="message">
+				改变标题
+			</span>
+		</div>
+		<script>
+			var app2=new Vue({
+				el:"#app-2",
+				data:{
+					message:'更新标题'+new Date()
+				}
+			})
+		</script>
+	</body>
+</html>

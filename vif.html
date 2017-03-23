@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>控制与循环</title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+	</head>
+	<body>
+		<div id="app-3">
+			<p v-if="seen">看不见我！</p>
+		</div>
+		<script>
+			var app3=new Vue({
+				el:'#app-3',
+				data:{
+					seen:true
+				}
+			});
+		</script>
+	</body>
+</html>

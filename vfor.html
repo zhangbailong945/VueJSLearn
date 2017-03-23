@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>循环控制</title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+	</head>
+	<body>
+		<div id="app-4">
+			<ol>
+				<li v-for="title in titles">
+					{{title.text}}
+				</li>
+			</ol>
+		</div>
+		<script>
+			var app4=new Vue({
+				el:'#app-4',
+				data:{
+					titles:[
+					  {text:'标题1'},
+					  {text:'标题2'},
+					  {text:'标题3'}
+					]
+				}
+			});
+		</script>
+	</body>
+</html>
