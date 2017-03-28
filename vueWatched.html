@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vueMethods实现计算</title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		
+	</head>
+	<body>
+		<div id="watch">
+			{{fullName}}
+		</div>
+		<script>
+           var vm=new Vue({
+           	el:'#watch',
+           	data:{
+           		firstName:'Zhang',
+           		lastName:'BaiLong',
+           		fullName:'ZhangBaiLong'
+           	},
+           	watch:{
+           		firstName:function(val){
+           			this.fullName=val+''.this.lastName;
+           		},
+           		lastName:function(val){
+           			this.fullName=this.firstName+' '+val;
+           		}
+           	}
+           })
+		</script>
+	</body>
+</html>

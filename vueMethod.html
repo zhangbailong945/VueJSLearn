@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vueMethods实现计算</title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		
+	</head>
+	<body>
+		<div id="example">
+			<p>消息:"{{message}}"</p>
+			<p><button v-on:click="reversedMessage">点击反转消息</button>反转message:"{{remessage}}"</p>
+		</div>
+		<script>
+           var vm=new Vue({
+           	el:'#example',
+           	data:{
+           		message:'Hello',
+           		remessage:''
+           	},
+           	created:function(){
+           		this.remessage=this.message;
+           	},
+           	methods:{
+           		reversedMessage:function(){
+           			this.remessage=this.message.split('').reverse().join('')
+           		}
+           	}
+           })
+		</script>
+	</body>
+</html>

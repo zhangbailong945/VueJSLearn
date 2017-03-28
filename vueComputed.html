@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vueMethods实现计算</title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		
+	</head>
+	<body>
+		<div id="watch">
+			{{fullName}}
+		</div>
+		<script>
+           var vm=new Vue({
+           	el:'#watch',
+           	data:{
+           		firstName:'Zhang',
+           		lastName:'BaiLong',
+           		fullName:'Zhang BaiLong'
+           	},
+           computed:{
+            	fullName:function(){
+            		return this.firstName+' '+this.lastName;
+            	}
+            }
+           })
+		</script>
+	</body>
+</html>

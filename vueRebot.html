@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vueJS调用图灵机器人API</title>
+		<script type="text/javascript" src="http://vuejs.org/js/vue.min.js" ></script>
+		<script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+        <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+	</head>
+	<body>
+		<div id="robot">
+		  <p>
+		          我是机器人，快来提问吧:
+		    <input v-model="question">
+		  </p>
+		  <p>{{ answer }}</p>
+		</div>
+		<script>
+           var robot = new Vue({
+			  el: '#robot',
+			  data: {
+			    question: '',
+			    answer: '你不问问题,我就休息去了(⊙o⊙)…'
+			  },
+			  watch: {
+			    // 如果 question 发生改变，这个函数就会运行
+			    question: function (newQuestion) {
+			      this.answer = '等你输入问题完毕...'
+			      this.getAnswer()
+			    }
+			  },
+			  methods: {
+			    // _.debounce 是一个通过 lodash 限制操作频率的函数。
+			    // ajax请求直到用户输入完毕才会发出
+			    // 学习更多关于 _.debounce function (and its cousin
+			    // _.throttle), 参考: https://lodash.com/docs#debounce
+			    getAnswer: _.debounce(
+			      function () {
+			        var vm = this
+			        /*
+			        if (this.question.indexOf('？') === -1) {
+			          vm.answer = '问我问题要带问号！'
+			          return
+			        }
+			        */
+			        var question=this.question;
+			        vm.answer = '让我想一想...'
+			        axios.get('http://www.tuling123.com/openapi/api',{
+					    params: {
+					      'key':'a90351f60b544caa87881c8e02644426',
+					      'info':question
+					    }
+					  })
+			          .then(function (response) {
+			            //vm.answer = _.capitalize(response.data.answer)
+			            vm.answer="机器人："+response.data.text;
+			          })
+			          .catch(function (error) {
+			            vm.answer = 'Error! Could not reach the API. ' + error
+			          })
+			      },
+			      // 这是我们为用户停止输入等待的毫秒数
+			      500
+			    )
+			  }
+			})
+		</script>
+	</body>
+</html>

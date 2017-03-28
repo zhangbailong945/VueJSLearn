@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue的生命周期和钩子</title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		
+	</head>
+	<body>
+		
+		<script>
+			var vm=new Vue({
+				data:{
+					a:333
+				},
+				created:function(){
+					console.log('a is:'+this.a);
+				}
+			});
+		</script>
+	</body>
+</html>
